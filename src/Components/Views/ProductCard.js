@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "use-http";
 import { NavLink, useParams } from "react-router-dom";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  CardImg,
-  Row,
-} from "react-bootstrap";
+
 import Categories from "./Categories";
 import LoggedUser from "./LoggedUser";
 import Loading from "./Loading";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { addCart } from "../../Management/Features/cartSlice";
 export default function ProductCard() {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState(false);
@@ -20,23 +15,27 @@ export default function ProductCard() {
 
   const { id } = useParams();
 
-  const [products, setProducts] = useState({});
+  const [product, setProduct] = useState({});
+
+  const authCheck = useSelector((state) => state.authReducer.isLoggedIn);
+  useSelector((s) => console.log(s));
 
   const { get, response } = useFetch();
   async function fetchPropducts() {
     const endpoint = await get(`/products/${id}`);
-    console.log(endpoint);
+    console.log(response);
 
-    console.log(response.ok);
     if (response.ok) {
-      setProducts(endpoint);
+      setProduct(endpoint);
       setLoading(false);
+    } else {
+      toast.error("Unable to load Data");
     }
   }
-  console.log(next);
   useEffect(() => {
     fetchPropducts();
   }, []);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -46,15 +45,18 @@ export default function ProductCard() {
         <div class="card mt-4">
           <div class="card-body p-2">
             <div className="text-end d-flex justify-content-end">
-              <NavLink to={`/categories/${products?.category?.id}`}>
+              <NavLink to={`/categories/${product?.category?.id}`}>
                 <button className="border-0 bg-danger text-white ">
-                  {products?.category?.name}
+                  {product?.category?.name}
                 </button>
               </NavLink>
             </div>
             <div className="row">
               <div className="col-3">
-                <img class="col-12" src={products?.images?.[next]} />
+                <img
+                  class="col-12 rounded-2 shadow-lg"
+                  src={product?.images?.[next]}
+                />
                 <button
                   className="border-0 text-center"
                   onClick={() => (next <= 1 ? setNext(next + 1) : setNext(0))}
@@ -63,12 +65,12 @@ export default function ProductCard() {
                 </button>
               </div>
               <div className="col-8 mt-3">
-                <h5 class="card-title">{products?.title}</h5>
-                <p className="mt-2 text-secondary">{products?.description}</p>
+                <h5 class="card-title">{product?.title}</h5>
+                <p className="mt-2 text-secondary">{product?.description}</p>
                 <div className="mt-5">
-                  <a href="#" class="card-link ">
-                    Add to Card
-                  </a>
+                  <button onClick={() => dispatch(addCart(product))}>
+                    Add to cart
+                  </button>
                   <a href="#" class="card-link">
                     Purchase
                   </a>
@@ -81,7 +83,7 @@ export default function ProductCard() {
       <div className="row bg-white mt-3"></div>
       <LoggedUser />
 
-      <Categories />
+      {/* <Categories /> */}
     </>
   );
 }

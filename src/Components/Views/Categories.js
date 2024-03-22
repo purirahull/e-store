@@ -12,7 +12,7 @@ import {
 } from "react-bootstrap";
 
 export default function Categories() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(false);
 
   const [products, setProducts] = useState([]);
@@ -28,11 +28,8 @@ export default function Categories() {
     const endpoint = await get(`/categories`);
     console.log(endpoint);
 
-    console.log(response.ok);
     if (response.ok) {
-      console.log(endpoint);
       setProducts(endpoint);
-      console.log(products);
     }
   }
 

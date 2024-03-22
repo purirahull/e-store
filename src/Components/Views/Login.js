@@ -1,17 +1,24 @@
 import React from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useFetch } from "use-http";
+import { useDispatch } from "react-redux";
+import { userLogin } from "../../Management/Features/authSlice";
 
 export default function Login() {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
   const handleForm = async (data) => {
     console.log(data);
     let api = await post(`/auth/login`, data);
+    console.log(api);
     if (response.ok) {
       localStorage.setItem("auth", JSON.stringify(api));
+      dispatch(userLogin(api));
       navigate("/products");
     } else toast.error("Invalid Credentials");
   };

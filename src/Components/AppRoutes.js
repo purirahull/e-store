@@ -9,16 +9,14 @@ import Login from "./Views/Login";
 
 export default function AppRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<AppContainer />} />
-        <Route path="/products" element={<ProductList />} />
-        <Route path="/products/:id" element={<ProductCard />} />
-        <Route path="/categories/:categoryId" element={<Categories />} />
-        <Route path="/login" element={<Login />} />
+    <Routes>
+      <Route index element={<AppContainer />} />
+      <Route path="/products" element={<ProductList />} />
+      <Route path="/products/:id" element={<ProductCard />} />
+      <Route path="/categories/:categoryId" element={<Categories />} />
+      <Route path="/login" element={<Login />} />
 
-        <Route path="/homepage" element={<Homepage />} />
-      </Routes>
-    </BrowserRouter>
+      <Route path="/home" element={<Homepage />} />
+    </Routes>
   );
 }

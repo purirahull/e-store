@@ -1,23 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
-// import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogout } from "../Management/Features/authSlice";
+import { NavLink } from "react-router-dom";
+import LoggedUser from "./Views/LoggedUser";
 
 export default function AppHeader() {
+  const data = useSelector((x) => x.cartReducer.items.length);
+
   return (
     <div>
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="/home">E Store</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
-
-            <Nav.Link href="/products">Products</Nav.Link>
-          </Nav>
-
-          <Nav>
-            <Nav.Link href="#features">User</Nav.Link>
-            <Nav.Link href="#pricing">Logout</Nav.Link>
-          </Nav>
+          <div className="menu-list">
+            <div>
+              <NavLink to="/products"> Products </NavLink>
+            </div>
+          </div>
+          <div>
+            <div>
+              <NavLink to="/categories"> Categories </NavLink>
+            </div>
+          </div>
+          <div>
+            <div>
+              <NavLink to="/settings/roles"> Login </NavLink>
+              <NavLink to="/settings/roles"> Logout </NavLink>
+            </div>
+          </div>
+          <p className="text-white"> Cart {data}</p>
         </Container>
       </Navbar>
     </div>
