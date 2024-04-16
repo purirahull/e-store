@@ -19,6 +19,8 @@ export function logout(
   action
 ) {
   if (action.type === "Auth/userLogout") {
+    localStorage.clear();
+
     return {
       ...state,
       isLoggedIn: false,

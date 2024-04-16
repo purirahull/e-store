@@ -28,7 +28,7 @@ export default function ProductCard() {
     if (response.ok) {
       setProduct(endpoint);
       setLoading(false);
-    } else {
+    } else if (response.ok) {
       toast.error("Unable to load Data");
     }
   }
@@ -42,8 +42,8 @@ export default function ProductCard() {
       {loading ? (
         <Loading />
       ) : (
-        <div class="card mt-4">
-          <div class="card-body p-2">
+        <div className="card mt-2 rounded-0 border-0 ">
+          <div className="card-body p-2 mb-4">
             <div className="text-end d-flex justify-content-end">
               <NavLink to={`/categories/${product?.category?.id}`}>
                 <button className="border-0 bg-danger text-white ">
@@ -51,29 +51,42 @@ export default function ProductCard() {
                 </button>
               </NavLink>
             </div>
-            <div className="row">
-              <div className="col-3">
-                <img
-                  class="col-12 rounded-2 shadow-lg"
-                  src={product?.images?.[next]}
-                />
+            <div className="d-flex row ">
+              <div className="col-3 d-flex">
                 <button
-                  className="border-0 text-center"
+                  className="border-0 text-center    btn"
+                  onClick={() => (next > 1 ? setNext(next - 1) : setNext(0))}
+                >
+                  ◄
+                </button>
+                <img
+                  className="col-12 rounded-2 shadow-lg"
+                  src={product?.images?.[next]}
+                ></img>
+                <button
+                  className="border-0 text-center btn"
                   onClick={() => (next <= 1 ? setNext(next + 1) : setNext(0))}
                 >
-                  Next
+                  ►
                 </button>
               </div>
-              <div className="col-8 mt-3">
-                <h5 class="card-title">{product?.title}</h5>
-                <p className="mt-2 text-secondary">{product?.description}</p>
+              <div className="col-8 mt-3 ms-5">
+                <h5 className="card-title ">{product?.title}</h5>
+                <p className="mt-2 text-secondary ">{product?.description}</p>
                 <div className="mt-5">
-                  <button onClick={() => dispatch(addCart(product))}>
+                  <button
+                    className="btn btn-secondary mx-1"
+                    onClick={() => dispatch(addCart(product))}
+                  >
                     Add to cart
                   </button>
-                  <a href="#" class="card-link">
+
+                  <button
+                    className="btn btn-secondary mx-1"
+                    onClick={() => dispatch(addCart(product))}
+                  >
                     Purchase
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

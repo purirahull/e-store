@@ -12,5 +12,5 @@ const load = {
 };
 
 export const store = configureStore({
-  reducer: { authReducer: authReducer, cartReducer: cartReducer },
+  reducer: { authReducer: authReducer, cartReducers: cartReducer },
 });

@@ -11,7 +11,7 @@ export default function LoggedUser() {
 
   console.log(useSelector((x) => console.log(x)));
   const navigate = useNavigate();
-  if (!auth) {
+  if (!auth && localStorage.getItem("auth")) {
     navigate("/login");
   }
   if (auth) {
