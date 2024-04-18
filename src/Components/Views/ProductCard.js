@@ -81,9 +81,9 @@ export default function ProductCard() {
               <div className="col-8  col-sm-12 mt-3 ms-4">
                 <h5 className="card-title ">{product?.title}</h5>
                 <p className="mt-2 text-secondary ">{product?.description}</p>
-                <div className="mt-5">
+                <div className="mt-5 d-flex">
                   <button
-                    className="btn btn-secondary mx-1"
+                    className="btn btn-secondary mx-1 text-nowrap"
                     onClick={() => dispatch(addCart(product))}
                   >
                     Add to cart
