@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "use-http";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 
-import Categories from "./Categories";
 import LoggedUser from "./LoggedUser";
 import Loading from "./Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { addCart } from "../../Management/Features/cartSlice";
+import { addRecent } from "../../Management/Features/recentSlice";
+import RecentItems from "./RecentItems";
 export default function ProductCard() {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState(false);
@@ -18,24 +19,33 @@ export default function ProductCard() {
   const [product, setProduct] = useState({});
 
   const authCheck = useSelector((state) => state.authReducer.isLoggedIn);
-  useSelector((s) => console.log(s));
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const { get, response } = useFetch();
   async function fetchPropducts() {
     const endpoint = await get(`/products/${id}`);
-    console.log(response);
+    console.log(endpoint);
 
     if (response.ok) {
       setProduct(endpoint);
       setLoading(false);
+      dispatch(addRecent(endpoint));
     } else if (response.ok) {
       toast.error("Unable to load Data");
     }
   }
   useEffect(() => {
     fetchPropducts();
-  }, []);
-  const dispatch = useDispatch();
+  }, [id]);
+
+  // useEffect(() => {
+  //   if (authCheck) {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   return (
     <>
@@ -95,8 +105,7 @@ export default function ProductCard() {
       )}
       <div className="row bg-white mt-3"></div>
       <LoggedUser />
-
-      {/* <Categories /> */}
+      <RecentItems />
     </>
   );
 }

@@ -5,7 +5,6 @@ import {
   Button,
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
   CardImg,
   Row,
@@ -14,10 +13,6 @@ import Loading from "./Loading";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../Management/Features/cartSlice";
 import emptyImage from "./empty.png";
-import { freeSet } from "@coreui/icons";
-
-import CIcon from "@coreui/icons-react";
-
 export default function ProductList() {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState(false);
@@ -69,7 +64,7 @@ export default function ProductList() {
               >
                 <NavLink to={`${items.id}`}>
                   <CardImg
-                    className="card_image rounded-0"
+                    className="card_image rounded-1"
                     src={items?.images[1] || emptyImage}
                     alt="NA"
                     style={{
@@ -80,7 +75,7 @@ export default function ProductList() {
                   />
 
                   <CardHeader className="text-success fw-light">
-                    {items.title}
+                    {items?.title?.slice(0, 20)}
                   </CardHeader>
                 </NavLink>
 
@@ -99,11 +94,6 @@ export default function ProductList() {
                     Add to cart
                   </Button>
                 </CardBody>
-                <CardFooter>
-                  {/* <Button className="text-center btn-secondary m-1 w-100 align-items-end">
-                    Purchase
-                  </Button> */}
-                </CardFooter>
               </Card>
             ))}
           </div>

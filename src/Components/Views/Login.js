@@ -40,6 +40,7 @@ export default function Login() {
               type="text"
               placeholder="Enter Email"
               {...register("email")}
+              value="john@mail.com"
             />
           </Form.Group>
 
@@ -50,6 +51,7 @@ export default function Login() {
               placeholder="Password"
               {...register("password")}
             />
+            changeme
           </Form.Group>
 
           <Button

@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { addProduct } from "../CartFunction";
 
+console.log(localStorage.getItem("cart_items"));
+
 const cart = {
-  items: [],
+  items: JSON.parse(localStorage.getItem("cart_items")) || [],
 };
 
 const cartSlice = createSlice({

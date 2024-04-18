@@ -1,3 +1,7 @@
+:root {
+  --green: #2c6e49;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -18,4 +22,15 @@ code {
 a:link {
   text-decoration: none;
   color: grey;
+}
+
+a {
+  color: white !important;
+  padding: 2px;
+}
+
+a.active {
+  border-bottom: 2px solid white;
+  color: white !important;
+  padding: 10px;
 }
