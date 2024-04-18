@@ -40,8 +40,8 @@ export default function ProductList() {
       {loading ? (
         <Loading />
       ) : (
-        <div>
-          <div className="row mb-5">
+        <div className="container-fluid">
+          <div className="row mb-5 container-fluid">
             {products.slice(initial, pagination)?.map((items) => (
               <Card
                 key={items.id}

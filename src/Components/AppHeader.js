@@ -20,9 +20,9 @@ export default function AppHeader() {
   }, []);
 
   return (
-    <div>
+    <div className="continer-fluid">
       <Navbar style={{ backgroundColor: "#004643" }} color="text-light">
-        <Container className="">
+        <Container fluid className="">
           <NavLink to="products">Products</NavLink>
 
           {auth ? (
@@ -35,7 +35,7 @@ export default function AppHeader() {
           ) : (
             <NavLink to="login">Login</NavLink>
           )}
-          <div>
+          <div className="me-4">
             <Cart data={data} />
           </div>
         </Container>

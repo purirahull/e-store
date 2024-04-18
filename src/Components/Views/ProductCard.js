@@ -54,15 +54,15 @@ export default function ProductCard() {
           <div className="card-body p-2 mb-4">
             <div className="text-end d-flex justify-content-end">
               <NavLink to={`/categories/${product?.category?.id}`}>
-                <button className="border-0 bg-danger text-white ">
+                <button className="border-0  mb-2 bg-danger text-white ">
                   {product?.category?.name}
                 </button>
               </NavLink>
             </div>
-            <div className="d-flex row ">
-              <div className="col-3 d-flex">
+            <div className="d-flex row container-fluid">
+              <div className="col-sm-3 col-lg-3  d-flex">
                 <button
-                  className="border-0 text-center    btn"
+                  className="border-0 text-center p-0 m-0   btn"
                   onClick={() => (next > 1 ? setNext(next - 1) : setNext(0))}
                 >
                   ◄
@@ -72,13 +72,13 @@ export default function ProductCard() {
                   src={product?.images?.[next]}
                 ></img>
                 <button
-                  className="border-0 text-center btn"
+                  className="border-0 text-center btn p-0 m-0"
                   onClick={() => (next <= 1 ? setNext(next + 1) : setNext(0))}
                 >
                   ►
                 </button>
               </div>
-              <div className="col-8 mt-3 ms-5">
+              <div className="col-8  col-sm-12 mt-3 ms-4">
                 <h5 className="card-title ">{product?.title}</h5>
                 <p className="mt-2 text-secondary ">{product?.description}</p>
                 <div className="mt-5">

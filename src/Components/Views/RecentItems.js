@@ -12,13 +12,13 @@ export default function RecentItems() {
 
   return (
     <>
-      <div className="row">
+      <div className="row mb-4">
         <p>Recently Viewed</p>
 
         {products.map((items) => (
           <Card
             key={items.id}
-            className="col-sm-4 col-lg-2 m-3 p-0 border-0 rounded-1 shadow-lg"
+            className="col-sm-4 col-lg-2 me-3 p-0 border-0 rounded-1 shadow-lg"
           >
             <NavLink to={`/products/${items.id}`}>
               <CardImg

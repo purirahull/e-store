@@ -20,7 +20,7 @@ export default function Cart({ data }) {
 
   return (
     <>
-      <Col>
+      <Col className="m-0 p-0">
         <CDropdown direction="center">
           <CDropdownToggle
             color="white"
@@ -28,7 +28,7 @@ export default function Cart({ data }) {
           >
             <CIcon
               icon={freeSet.cilCart}
-              className="mx-1 text-white "
+              className="ms-1 text-white "
               size="xl"
             />
             <CBadge color="danger" shape="rounded-pill">
