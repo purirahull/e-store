@@ -1,5 +1,4 @@
 export function login(state, action) {
-  console.log(state, action);
   const { access_token } = action.payload || {};
   state = {
     ...state,
@@ -11,7 +10,6 @@ export function login(state, action) {
 }
 
 export function logout(state, action) {
-  console.log("dd");
   if (action.type === "Auth/userLogout") {
     localStorage.clear();
 

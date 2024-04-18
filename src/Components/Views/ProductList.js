@@ -1,28 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "use-http";
 import { NavLink } from "react-router-dom";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  CardImg,
-  Row,
-} from "react-bootstrap";
+import { Button, Card, CardBody, CardHeader, CardImg } from "react-bootstrap";
 import Loading from "./Loading";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../Management/Features/cartSlice";
 import emptyImage from "./empty.png";
 export default function ProductList() {
   const [loading, setLoading] = useState(true);
-  const [errors, setErrors] = useState(false);
 
   const [products, setProducts] = useState([]);
 
   const { get, response } = useFetch();
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pagintedData, setPaginatedData] = useState([]);
   const [pagination, setPagination] = useState(10);
   const [initial, setInitial] = useState(0);
   const [length, setLength] = useState();
@@ -34,20 +24,15 @@ export default function ProductList() {
   async function fetchPropducts() {
     const endpoint = await get("/products");
 
-    console.log(endpoint);
     if (response.ok) {
       setProducts(endpoint);
       setLoading(false);
       setLength(Math.floor(products.length / 10));
     }
   }
-  console.log(localStorage.getItem("auth"));
   const handlepagination = (index) => {
-    console.log(index);
     setInitial(index);
     setPagination(index + 10);
-
-    console.log(initial, pagination);
   };
   const dispatch = useDispatch();
   return (

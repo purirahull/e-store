@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Button, Card, CardBody, CardHeader, CardImg } from "react-bootstrap";
-import Loading from "./Loading";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../Management/Features/cartSlice";
 import emptyImage from "./empty.png";
@@ -10,13 +9,12 @@ import { useSelector } from "react-redux";
 export default function RecentItems() {
   const dispatch = useDispatch();
   const products = useSelector((item) => item.recentReducer.items);
-  console.log(products);
-  console.log(products.length);
 
   return (
     <>
       <div className="row">
         <p>Recently Viewed</p>
+
         {products.map((items) => (
           <Card
             key={items.id}

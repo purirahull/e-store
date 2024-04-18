@@ -4,7 +4,6 @@ import { NavLink, useParams } from "react-router-dom";
 import {
   Button,
   Card,
-  CardBody,
   CardFooter,
   CardHeader,
   CardImg,
@@ -12,11 +11,11 @@ import {
 } from "react-bootstrap";
 
 export default function Categories() {
-  const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [errors, setErrors] = useState(false);
 
   const [products, setProducts] = useState([]);
-  const { categoryId } = useParams();
+  // const { categoryId } = useParams();
 
   const { get, response } = useFetch();
 
@@ -26,7 +25,6 @@ export default function Categories() {
 
   async function fetchPropducts() {
     const endpoint = await get(`/categories`);
-    console.log(endpoint);
 
     if (response.ok) {
       setProducts(endpoint);

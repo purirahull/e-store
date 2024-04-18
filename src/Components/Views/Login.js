@@ -13,9 +13,7 @@ export default function Login() {
   const dispatch = useDispatch();
 
   const handleForm = async (data) => {
-    console.log(data);
     let api = await post(`/auth/login`, data);
-    console.log(api);
     if (response.ok) {
       localStorage.setItem("auth", JSON.stringify(api));
       dispatch(userLogin(api));
@@ -51,7 +49,9 @@ export default function Login() {
               placeholder="Password"
               {...register("password")}
             />
-            changeme
+            <small>
+              <i> *password: changeme </i>
+            </small>
           </Form.Group>
 
           <Button

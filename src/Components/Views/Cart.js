@@ -18,7 +18,6 @@ export default function Cart({ data }) {
 
   const products = useSelector((element) => element.cartReducers.items);
 
-  console.log(products);
   return (
     <>
       <Col>

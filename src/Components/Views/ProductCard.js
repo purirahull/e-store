@@ -4,30 +4,28 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 
 import LoggedUser from "./LoggedUser";
 import Loading from "./Loading";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { addCart } from "../../Management/Features/cartSlice";
 import { addRecent } from "../../Management/Features/recentSlice";
 import RecentItems from "./RecentItems";
 export default function ProductCard() {
   const [loading, setLoading] = useState(true);
-  const [errors, setErrors] = useState(false);
   const [next, setNext] = useState(0);
 
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
 
-  const authCheck = useSelector((state) => state.authReducer.isLoggedIn);
+  // const authCheck = useSelector((state) => state.authReducer.isLoggedIn);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
   const { get, response } = useFetch();
   async function fetchPropducts() {
     const endpoint = await get(`/products/${id}`);
-    console.log(endpoint);
 
     if (response.ok) {
       setProduct(endpoint);
