@@ -20,7 +20,7 @@ function App() {
       <Provider url={process.env.REACT_APP_API_URL}>
         <BrowserRouter>
           <AppHeader />
-          <Container>
+          <Container className="p-0">
             <AppRoutes />
           </Container>
         </BrowserRouter>

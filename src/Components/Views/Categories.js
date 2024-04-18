@@ -33,14 +33,16 @@ export default function Categories() {
 
   return (
     <>
-      <Row className="text-center ms-2"> Categories</Row>
-      <div className="row">
-        {products.map((items) => (
+      <Row className="text-start ms-2 ">
+        <em> Categories</em>
+      </Row>
+      <div className="row container">
+        {products?.slice(0, 5)?.map((items) => (
           <Card
             key={items.id}
             className="col-sm-4 col-lg-2  m-3 border-0 rounded-1  d-flex  shadow-lg"
           >
-            <NavLink to={`${items.id}`}>
+            <NavLink>
               <CardImg
                 className="card_image"
                 src={items?.image}
@@ -48,12 +50,6 @@ export default function Categories() {
               />
 
               <CardHeader className="text-success">{items.name}</CardHeader>
-
-              <CardFooter>
-                <Button className="text-center btn-secondary m-1 w-100 align-items-end">
-                  Purchase
-                </Button>
-              </CardFooter>
             </NavLink>
           </Card>
         ))}

@@ -20,10 +20,19 @@ export default function AppHeader() {
   }, []);
 
   return (
-    <div className="continer-fluid">
-      <Navbar style={{ backgroundColor: "#004643" }} color="text-light">
-        <Container fluid className="">
-          <NavLink to="products">Products</NavLink>
+    <div>
+      <Navbar
+        className="w-100"
+        style={{ backgroundColor: "#004643" }}
+        color="text-light"
+      >
+        <div className="d-flex justify-content-around align-items-center w-100">
+          <NavLink to="home" className="ms-4">
+            Home
+          </NavLink>
+          <NavLink to="products" className="ms-4">
+            Products
+          </NavLink>
 
           {auth ? (
             <button
@@ -38,7 +47,7 @@ export default function AppHeader() {
           <div className="me-4">
             <Cart data={data} />
           </div>
-        </Container>
+        </div>
       </Navbar>
     </div>
   );

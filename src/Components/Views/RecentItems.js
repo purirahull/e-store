@@ -12,8 +12,10 @@ export default function RecentItems() {
 
   return (
     <>
-      <div className="row mb-4">
-        <p>Recently Viewed</p>
+      <div className="row mb-4 ">
+        <p className="">
+          <em>Recently Viewed</em>
+        </p>
 
         {products.map((items) => (
           <Card

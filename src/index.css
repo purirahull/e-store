@@ -32,5 +32,4 @@ a {
 a.active {
   border-bottom: 2px solid white;
   color: white !important;
-  padding: 10px;
 }

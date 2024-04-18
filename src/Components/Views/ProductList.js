@@ -45,7 +45,7 @@ export default function ProductList() {
             {products.slice(initial, pagination)?.map((items) => (
               <Card
                 key={items.id}
-                className="col-sm-4 col-lg-2  m-3 p-0 border-0 rounded-1  d-flex  shadow-lg"
+                className="col-sm-4 col-lg-2  m-3 p-0 border-0 rounded-1  d-flex justify-content-center  shadow-lg"
               >
                 <NavLink to={`${items.id}`}>
                   <CardImg
@@ -54,7 +54,7 @@ export default function ProductList() {
                     alt="NA"
                     style={{
                       // width: "220px",
-                      height: "200px",
+                      height: "190px",
                       objectFit: "cover",
                     }}
                   />

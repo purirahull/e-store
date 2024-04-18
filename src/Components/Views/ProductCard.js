@@ -25,7 +25,7 @@ export default function ProductCard() {
 
   const { get, response } = useFetch();
   async function fetchPropducts() {
-    const endpoint = await get(`/products/${id}`);
+    const endpoint = await get(`/products/${id ? id : 2}`);
 
     if (response.ok) {
       setProduct(endpoint);
@@ -78,9 +78,11 @@ export default function ProductCard() {
                   ►
                 </button>
               </div>
-              <div className="col-8  col-sm-12 mt-3 ms-4">
+              <div className="col-lg-8  col-sm-12 mt-3 ms-4">
                 <h5 className="card-title ">{product?.title}</h5>
-                <p className="mt-2 text-secondary ">{product?.description}</p>
+                <p className="mt-2 text-secondary text-justify ">
+                  {product?.description}
+                </p>
                 <div className="mt-5 d-flex">
                   <button
                     className="btn btn-secondary mx-1 text-nowrap"
