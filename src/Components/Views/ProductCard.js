@@ -15,7 +15,7 @@ export default function ProductCard() {
 
   const { id } = useParams();
 
-  const items = [22, 1, 3, 21, 5, 6, 7, 8, 9, 12, 18];
+  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 14, 16, 18, 19, 22, 23];
 
   const fallbackId = items[Math.floor(Math.random() * items.length)];
 
@@ -29,7 +29,7 @@ export default function ProductCard() {
 
   const { get, response } = useFetch();
   async function fetchPropducts() {
-    const endpoint = await get(`/products/${id ? id : fall}`);
+    const endpoint = await get(`/products/${id ? id : fallbackId}`);
 
     if (response.ok) {
       setProduct(endpoint);
