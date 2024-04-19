@@ -34,6 +34,8 @@ export default function ProductCard() {
     if (response.ok) {
       setProduct(endpoint);
       setLoading(false);
+      window.scrollTo(0, 0);
+
       dispatch(addRecent(endpoint));
     } else if (response.ok) {
       toast.error("Unable to load Data");
