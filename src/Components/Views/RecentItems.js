@@ -23,21 +23,26 @@ export default function RecentItems() {
             className="col-sm-4 col-lg-2 me-3 p-0 border-0 rounded-1 shadow-lg"
           >
             <NavLink to={`/products/${items.id}`}>
-              <CardImg
-                className="card_image rounded-1"
-                src={
-                  items?.images[0] ||
-                  "https://i.imgur.com/9LFjwpI.jpeg" ||
-                  emptyImage
-                }
-                alt="NA"
+              <div
                 style={{
-                  // width: "220px",
-                  height: "200px",
-                  objectFit: "cover",
+                  height: "190px",
                 }}
-              />
-
+              >
+                <CardImg
+                  className="card_image rounded-1"
+                  src={
+                    items?.images[0] ||
+                    "https://i.imgur.com/9LFjwpI.jpeg" ||
+                    emptyImage
+                  }
+                  alt="NA"
+                  style={{
+                    // width: "220px",
+                    height: "200px",
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
               <CardHeader className="text-success fw-light">
                 {items?.title?.slice(0, 20)}
               </CardHeader>

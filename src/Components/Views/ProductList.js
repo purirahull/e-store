@@ -48,16 +48,22 @@ export default function ProductList() {
                 className="col-sm-4 col-lg-2   m-3 p-0 border-0 rounded-1  d-flex justify-content-center  shadow-lg"
               >
                 <NavLink to={`${items.id}`}>
-                  <CardImg
-                    className="card_image rounded-1"
-                    src={items?.images[1] || emptyImage}
-                    alt="NA"
+                  <div
                     style={{
-                      // width: "220px",
                       height: "190px",
-                      objectFit: "cover",
                     }}
-                  />
+                  >
+                    <CardImg
+                      className="card_image rounded-1"
+                      src={items?.images[1] || emptyImage}
+                      alt="NA"
+                      style={{
+                        // width: "220px",
+                        height: "190px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
 
                   <CardHeader className="text-success fw-light">
                     {items?.title?.slice(0, 20)}

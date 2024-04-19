@@ -43,11 +43,21 @@ export default function Categories() {
             className="col-sm-4 col-lg-2  m-3 border-0 rounded-1  d-flex  shadow-lg"
           >
             <NavLink>
-              <CardImg
-                className="card_image"
-                src={items?.image}
-                style={{ width: "200px", height: "200px", objectFit: "cover" }}
-              />
+              <div
+                style={{
+                  height: "190px",
+                }}
+              >
+                <CardImg
+                  className="card_image"
+                  src={items?.image}
+                  style={{
+                    width: "200px",
+                    height: "200px",
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
 
               <CardHeader className="text-success">{items.name}</CardHeader>
             </NavLink>
