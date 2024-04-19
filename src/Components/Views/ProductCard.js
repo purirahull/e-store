@@ -48,7 +48,24 @@ export default function ProductCard() {
   return (
     <>
       {loading ? (
-        <Loading />
+        <div className="container mb-5">
+          <p class="card-text placeholder-glow mt-5">
+            <div className="row">
+              <div className="col-4 col-sm-6">
+                <span class="placeholder p-5  w-100"></span>
+                <span class="placeholder p-5  w-100"></span>
+              </div>
+              <div className="col">
+                <span class="placeholder p-1 w-100  col-8"></span>
+                <span class="placeholder p-1 w-100  col-8"></span>
+                <span class="placeholder p-1 w-100  col-8"></span>
+                <br />
+                <br />
+                <span class="placeholder col-5 "></span>
+              </div>
+            </div>
+          </p>
+        </div>
       ) : (
         <div className="card mt-2 rounded-0 border-0 ">
           <div className="card-body p-2 mb-4">
@@ -105,7 +122,9 @@ export default function ProductCard() {
       )}
       <div className="row bg-white mt-3"></div>
       <LoggedUser />
-      <RecentItems />
+      <div className="container">
+        <RecentItems />
+      </div>
     </>
   );
 }
