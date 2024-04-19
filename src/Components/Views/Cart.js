@@ -21,7 +21,7 @@ export default function Cart({ data }) {
 
   return (
     <>
-      <Col className="m-0 p-0">
+      <Col className="m-0 p-0 ">
         <CDropdown direction="center">
           <CDropdownToggle
             color="white"
@@ -49,7 +49,7 @@ export default function Cart({ data }) {
                       }
                       style={{ width: "35px" }}
                     />
-                    {item.payload.title}
+                    {item?.payload?.title?.slice(0, 25)}
                   </CDropdownItem>
                 </section>
               ))

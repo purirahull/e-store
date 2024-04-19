@@ -45,7 +45,7 @@ export default function AppHeader() {
           ) : (
             <NavLink to="login">Login</NavLink>
           )}
-          <div className="me-4">
+          <div className="me-4 ">
             <Cart data={data} />
           </div>
         </div>

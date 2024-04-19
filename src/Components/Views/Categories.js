@@ -58,9 +58,9 @@ export default function Categories() {
                 />
               </div>
 
-              <CardHeader className="text-success mt-2">
+              <p className="text-success mt-4 text-center border-0">
                 {items.name}
-              </CardHeader>
+              </p>
             </NavLink>
           </Card>
         ))}
