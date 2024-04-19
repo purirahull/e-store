@@ -25,7 +25,11 @@ export default function RecentItems() {
             <NavLink to={`/products/${items.id}`}>
               <CardImg
                 className="card_image rounded-1"
-                src={items?.images[0] || emptyImage}
+                src={
+                  items?.images[0] ||
+                  "https://i.imgur.com/9LFjwpI.jpeg" ||
+                  emptyImage
+                }
                 alt="NA"
                 style={{
                   // width: "220px",

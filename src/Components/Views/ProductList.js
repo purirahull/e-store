@@ -40,12 +40,12 @@ export default function ProductList() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="container-fluid">
-          <div className="row mb-5 container-fluid">
+        <div className="container-fluid mt-3">
+          <div className="row mb-5 container-fluid d-flex justify-content-center">
             {products.slice(initial, pagination)?.map((items) => (
               <Card
                 key={items.id}
-                className="col-sm-4 col-lg-2  m-3 p-0 border-0 rounded-1  d-flex justify-content-center  shadow-lg"
+                className="col-sm-4 col-lg-2   m-3 p-0 border-0 rounded-1  d-flex justify-content-center  shadow-lg"
               >
                 <NavLink to={`${items.id}`}>
                   <CardImg

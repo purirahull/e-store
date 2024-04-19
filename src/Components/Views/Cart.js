@@ -12,6 +12,7 @@ import {
 import React from "react";
 import { Card, CardImg, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import emptyImage from "./empty.png";
 
 export default function Cart({ data }) {
   // const [total, setTotal] = useState(0);
@@ -36,19 +37,28 @@ export default function Cart({ data }) {
             </CBadge>
           </CDropdownToggle>
           <CDropdownMenu className="rounded-0 shadow-lg p-2 mt-3 border-0">
-            {products
-              ? products?.map((item) => (
-                  <CDropdownItem className="text-dark mt-1" key={item.id}>
+            {products.length > 0 ? (
+              products?.map((item) => (
+                <section key={item.id}>
+                  <CDropdownItem className="text-dark mt-1">
                     <CardImg
-                      src={item.payload.images[0] || item.payload.images[1]}
+                      src={
+                        item.payload.images[0] ||
+                        item.payload.images[1] ||
+                        emptyImage
+                      }
                       style={{ width: "35px" }}
                     />
                     {item.payload.title}
                   </CDropdownItem>
-                ))
-              : null}
+                </section>
+              ))
+            ) : (
+              <p className="text-center p-0 m-0 fst-italic">No Items.</p>
+            )}
             <CDropdownDivider />
-            <CButton className="bg-secondary w-100 text-white rounded-1">
+
+            <CButton className="bg-secondary  w-100 text-white rounded-1">
               Checkout
             </CButton>
           </CDropdownMenu>

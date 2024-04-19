@@ -46,7 +46,7 @@ export default function Categories() {
               <CardImg
                 className="card_image"
                 src={items?.image}
-                style={{ width: "200px;", height: "200px", objectFit: "cover" }}
+                style={{ width: "200px", height: "200px", objectFit: "cover" }}
               />
 
               <CardHeader className="text-success">{items.name}</CardHeader>

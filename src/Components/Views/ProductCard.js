@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "use-http";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-
 import LoggedUser from "./LoggedUser";
-import Loading from "./Loading";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { addCart } from "../../Management/Features/cartSlice";
 import { addRecent } from "../../Management/Features/recentSlice";
 import RecentItems from "./RecentItems";
+import emptyImage from "./empty.png";
+
 export default function ProductCard() {
   const [loading, setLoading] = useState(true);
   const [next, setNext] = useState(0);
@@ -25,7 +25,7 @@ export default function ProductCard() {
 
   const { get, response } = useFetch();
   async function fetchPropducts() {
-    const endpoint = await get(`/products/${id ? id : 2}`);
+    const endpoint = await get(`/products/${id ? id : 14}`);
 
     if (response.ok) {
       setProduct(endpoint);
@@ -35,6 +35,8 @@ export default function ProductCard() {
       toast.error("Unable to load Data");
     }
   }
+
+  console.log(loading);
   useEffect(() => {
     fetchPropducts();
   }, [id]);
@@ -49,22 +51,22 @@ export default function ProductCard() {
     <>
       {loading ? (
         <div className="container mb-5">
-          <p class="card-text placeholder-glow mt-5">
+          <div className="card-text placeholder-glow mt-5">
             <div className="row">
               <div className="col-4 col-sm-6">
-                <span class="placeholder p-5  w-100"></span>
-                <span class="placeholder p-5  w-100"></span>
+                <span className="placeholder p-5  w-100"></span>
+                <span className="placeholder p-5  w-100"></span>
               </div>
               <div className="col">
-                <span class="placeholder p-1 w-100  col-8"></span>
-                <span class="placeholder p-1 w-100  col-8"></span>
-                <span class="placeholder p-1 w-100  col-8"></span>
+                <span className="placeholder p-1 w-100  col-8"></span>
+                <span className="placeholder p-1 w-100  col-8"></span>
+                <span className="placeholder p-1 w-100  col-8"></span>
                 <br />
                 <br />
-                <span class="placeholder col-5 "></span>
+                <span className="placeholder col-5 "></span>
               </div>
             </div>
-          </p>
+          </div>
         </div>
       ) : (
         <div className="card mt-2 rounded-0 border-0 ">
@@ -77,7 +79,7 @@ export default function ProductCard() {
               </NavLink>
             </div>
             <div className="d-flex row container-fluid">
-              <div className="col-sm-3 col-lg-3  d-flex">
+              <div className="col-sm-12 col-lg-3  d-flex">
                 <button
                   className="border-0 text-center p-0 m-0   btn"
                   onClick={() => (next > 1 ? setNext(next - 1) : setNext(0))}
@@ -85,8 +87,8 @@ export default function ProductCard() {
                   ◄
                 </button>
                 <img
-                  className="col-12 rounded-2 shadow-lg"
-                  src={product?.images?.[next]}
+                  className="col-12 col-sm-12 rounded-2 shadow-lg"
+                  src={product?.images?.[next] || emptyImage}
                 ></img>
                 <button
                   className="border-0 text-center btn p-0 m-0"

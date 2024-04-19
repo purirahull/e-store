@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Navbar, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../Management/Features/authSlice";
+import { clearCart } from "../Management/Features/cartSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import Cart from "./Views/Cart";
@@ -37,7 +38,7 @@ export default function AppHeader() {
           {auth ? (
             <button
               className="border-0 btn text-white text-decoration-none btn-link"
-              onClick={() => dispatch(userLogout())}
+              onClick={() => dispatch(userLogout(), dispatch(clearCart()))}
             >
               Logout
             </button>
