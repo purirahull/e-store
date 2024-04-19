@@ -37,7 +37,6 @@ export default function RecentItems() {
                     "https://i.imgur.com/9LFjwpI.jpeg" ||
                     emptyImage
                   }
-                  alt="NA"
                   style={{
                     // width: "220px",
                     height: "200px",

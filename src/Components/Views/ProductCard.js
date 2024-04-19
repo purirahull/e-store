@@ -85,15 +85,17 @@ export default function ProductCard() {
               </NavLink>
             </div>
             <div className="d-flex row container-fluid">
-              <div className="col-sm-12 col-lg-3  d-flex">
+              <div className="col-sm-12 col-lg-3 ms-3 p-0  d-flex justify-content-center">
                 <button
-                  className="border-0 text-center p-0 m-0   btn"
+                  className="border-0 text-center p-0 m-0  btn"
                   onClick={() => (next > 1 ? setNext(next - 1) : setNext(0))}
                 >
                   ◄
                 </button>
+
                 <img
-                  className="col-12 col-sm-12 rounded-2 shadow-lg"
+                  className="col-12 col-sm-12 rounded-2 shadow-lg "
+                  style={{ height: "290px", width: "290px" }}
                   src={product?.images?.[next] || emptyImage}
                 ></img>
                 <button

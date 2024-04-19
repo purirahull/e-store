@@ -36,30 +36,31 @@ export default function Categories() {
       <Row className="text-start ms-2 ">
         <em> Categories</em>
       </Row>
-      <div className="row container">
+      <div className="row  container-fluid">
         {products?.slice(0, 5)?.map((items) => (
           <Card
             key={items.id}
             className="col-sm-4 col-lg-2  m-3 border-0 rounded-1  d-flex  shadow-lg"
           >
-            <NavLink>
+            <NavLink className="w-100">
               <div
                 style={{
                   height: "190px",
                 }}
               >
                 <CardImg
-                  className="card_image"
+                  className="card_image mt-2"
                   src={items?.image}
                   style={{
-                    width: "200px",
                     height: "200px",
                     objectFit: "cover",
                   }}
                 />
               </div>
 
-              <CardHeader className="text-success">{items.name}</CardHeader>
+              <CardHeader className="text-success mt-2">
+                {items.name}
+              </CardHeader>
             </NavLink>
           </Card>
         ))}
