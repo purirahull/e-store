@@ -13,11 +13,13 @@ export default function RecentItems() {
   return (
     <>
       <div className="row mb-4 ">
-        <p className="">
-          <em>Recently Viewed</em>
-        </p>
+        {products?.length >= 1 ? (
+          <p>
+            <em>Recently Viewed</em>
+          </p>
+        ) : null}
 
-        {products.map((items) => (
+        {products?.map((items) => (
           <Card
             key={items.id}
             className="col-sm-4 col-lg-2 me-3 p-0 border-0 rounded-1 shadow-lg"
